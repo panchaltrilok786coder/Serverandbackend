@@ -54,21 +54,3 @@ async function loadSingleBlog(id) {
     document.getElementById("content").innerText = "";
   }
 }
-
-import { db } from "./firebase.js";
-import { collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
-
-async function testFirestore() {
-  try {
-    // Add a test doc
-    await addDoc(collection(db, "test"), { message: "Hello Firebase!" });
-
-    // Read all docs
-    const snapshot = await getDocs(collection(db, "test"));
-    snapshot.forEach(doc => console.log(doc.id, doc.data()));
-  } catch (err) {
-    console.error("Firestore test failed:", err);
-  }
-}
-
-testFirestore();
