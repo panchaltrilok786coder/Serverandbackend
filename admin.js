@@ -1,12 +1,6 @@
 // admin.js
 import { db, auth } from "./firebase.js";
-import {
-  collection,
-  addDoc,
-  getDocs,
-  deleteDoc,
-  doc
-} from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+import { collection, addDoc, getDocs, deleteDoc, doc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 import { onAuthStateChanged, signOut } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
 
 // Redirect if not logged in
@@ -36,12 +30,17 @@ async function loadBlogs() {
 
   snapshot.forEach(docSnap => {
     const blog = docSnap.data();
-    container.innerHTML += `
-      <div class="admin-blog-card">
-        <h3>${blog.title}</h3>
-        <button onclick="deleteBlog('${docSnap.id}')">Delete</button>
+    const div = document.createElement("div");
+    div.className = "blog-card"; // consistent styling
+
+    div.innerHTML = `
+      <h3>${blog.title}</h3>
+      <div>
+        <button class="btn" onclick="deleteBlog('${docSnap.id}')">Delete</button>
       </div>
     `;
+
+    container.appendChild(div);
   });
 }
 
