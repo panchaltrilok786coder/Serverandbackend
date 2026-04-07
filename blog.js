@@ -1,6 +1,6 @@
 // app.js
 import { db } from "./firebase.js";
-import { collection, getDocs, doc, getDoc } from "firebase/firestore";
+import { collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
 // ---------- HOME PAGE: SHOW BLOG LIST ----------
 const blogList = document.getElementById("blogList");
