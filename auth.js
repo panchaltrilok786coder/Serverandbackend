@@ -10,6 +10,7 @@ onAuthStateChanged(auth, user => {
 });
 
 window.login = async function() {
+  alert("My name is trilok")
   const email = document.getElementById("email").value;
   const password = document.getElementById("password").value;
 
