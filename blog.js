@@ -11,12 +11,13 @@ if (blogList) {
 
 async function loadBlogs() {
   const snapshot = await getDocs(collection(db, "blogs"));
+  blogList.innerHTML = ""; // Clear before adding
 
   snapshot.forEach(docSnap => {
     const blog = docSnap.data();
 
     const div = document.createElement("div");
-    div.className = "blog-card";
+    div.className = "blog-card"; // Use consistent blog-card class
 
     div.innerHTML = `
       <h3>${blog.title}</h3>
@@ -40,8 +41,14 @@ async function loadSingleBlog(id) {
 
   if (blogSnap.exists()) {
     const blog = blogSnap.data();
-    document.getElementById("title").innerText = blog.title;
-    document.getElementById("content").innerText = blog.content;
+    const blogContainer = document.createElement("div");
+    blogContainer.className = "blog-card"; // Wrap in blog-card for consistency
+    blogContainer.innerHTML = `
+      <h1>${blog.title}</h1>
+      <p>${blog.content}</p>
+    `;
+    document.querySelector(".container").innerHTML = ""; // Clear container
+    document.querySelector(".container").appendChild(blogContainer);
   } else {
     document.getElementById("title").innerText = "Blog Not Found";
     document.getElementById("content").innerText = "";
