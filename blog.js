@@ -54,4 +54,4 @@ async function loadSingleBlog(id) {
     document.getElementById("content").innerText = "";
   }
 }
-document.getElementById("blogList").innerHTML = "<p>app.js is working!</p>";
+document.getElementById("blogList").innerHTML = "<p>sambhromato.js is working!</p>";
