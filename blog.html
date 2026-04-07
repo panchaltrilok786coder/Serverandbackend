@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Blog</title>
   <link rel="stylesheet" href="style.css" />
 </head>
@@ -9,13 +10,18 @@
 
 <nav class="navbar">
   <h1>MyBlog</h1>
+  <div class="nav-links">
+    <a href="index.html" class="btn">Home</a>
+  </div>
 </nav>
 
 <section class="container">
-  <h1 id="title"></h1>
-  <p id="content"></p>
+  <div class="blog-card">
+    <h1 id="title"></h1>
+    <p id="content"></p>
+  </div>
 </section>
-<h1> My name is Trilok Mahnedra Panchal.I have developed this website</h1>
-<script src="blog.js"></script>
+
+<script type="module" src="app.js"></script>
 </body>
 </html>
