@@ -21,3 +21,4 @@ window.login = async function() {
     alert(err.message);
   }
 };
+alert("app.js loaded");
