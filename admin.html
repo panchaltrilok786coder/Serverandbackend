@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Admin Panel</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<section class="container">
+  <div class="blog-card">
+    <h2>Add Blog</h2>
+    <input id="titleInput" placeholder="Title" class="input-field">
+    <textarea id="contentInput" placeholder="Content" class="input-field"></textarea>
+    <button onclick="addBlog()" class="btn">Add Blog</button>
+  </div>
+
+  <div class="container">
+    <h2>All Blogs</h2>
+    <div id="adminBlogs" class="blog-list"></div>
+    <button onclick="logout()" class="btn">Logout</button>
+  </div>
+</section>
+
+<script type="module" src="admin.js"></script>
+</body>
+</html>
