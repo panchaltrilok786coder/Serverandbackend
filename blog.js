@@ -1,39 +1,49 @@
-const blogs = [
-  {
-    id: 1,
-    title: "First Blog",
-    content: "This is my first blog post."
-  },
-  {
-    id: 2,
-    title: "Second Blog",
-    content: "This is another blog post."
-  }
-];
+// app.js
+import { db } from "./firebase.js";
+import { collection, getDocs, doc, getDoc } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
 
-// Show blogs on homepage
+// ---------- HOME PAGE: SHOW BLOG LIST ----------
 const blogList = document.getElementById("blogList");
 
 if (blogList) {
-  blogs.forEach(blog => {
+  loadBlogs();
+}
+
+async function loadBlogs() {
+  const snapshot = await getDocs(collection(db, "blogs"));
+
+  snapshot.forEach(docSnap => {
+    const blog = docSnap.data();
+
     const div = document.createElement("div");
     div.className = "blog-card";
 
     div.innerHTML = `
       <h3>${blog.title}</h3>
-      <a href="blog.html?id=${blog.id}" class="btn">Read More</a>
+      <a href="blog.html?id=${docSnap.id}" class="btn">Read More</a>
     `;
 
     blogList.appendChild(div);
   });
 }
 
-// Show single blog
+// ---------- SINGLE BLOG PAGE ----------
 const params = new URLSearchParams(window.location.search);
 const id = params.get("id");
 
 if (id) {
-  const blog = blogs.find(b => b.id == id);
-  document.getElementById("title").innerText = blog.title;
-  document.getElementById("content").innerText = blog.content;
+  loadSingleBlog(id);
+}
+
+async function loadSingleBlog(id) {
+  const blogSnap = await getDoc(doc(db, "blogs", id));
+
+  if (blogSnap.exists()) {
+    const blog = blogSnap.data();
+    document.getElementById("title").innerText = blog.title;
+    document.getElementById("content").innerText = blog.content;
+  } else {
+    document.getElementById("title").innerText = "Blog Not Found";
+    document.getElementById("content").innerText = "";
+  }
 }
