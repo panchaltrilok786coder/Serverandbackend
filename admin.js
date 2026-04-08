@@ -25,6 +25,7 @@ window.addBlog = async function() {
 
 // LOAD ALL BLOGS
 async function loadBlogs() {
+  alert("loadBlog Triggered yohohho");
   const snapshot = await getDocs(collection(db, "blogs"));
   const container = document.getElementById("adminBlogs");
   container.innerHTML = "";
