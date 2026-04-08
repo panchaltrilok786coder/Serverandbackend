@@ -12,6 +12,7 @@ onAuthStateChanged(auth, user => {
 
 // ADD BLOG
 window.addBlog = async function() {
+  alert("addBlog Triggered yohohho");
   const title = document.getElementById("titleInput").value;
   const content = document.getElementById("contentInput").value;
 
