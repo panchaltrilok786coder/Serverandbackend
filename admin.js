@@ -56,3 +56,5 @@ window.logout = async function() {
   window.location.href = "login.html";
 };
 loadBlogs();
+const blogaddbtn = document.getElementbyId("addbtn");
+blogaddbtn.addEventListener("click", addBlog);
