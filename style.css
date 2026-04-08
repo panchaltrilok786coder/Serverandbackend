@@ -31,7 +31,7 @@ body {
 
 .blog-card {
   padding: 20px;
-  background: #1a1a1a;
+  background: cyan;
   border-radius: 10px;
   border: 1px solid transparent;
   transition: 0.3s;
